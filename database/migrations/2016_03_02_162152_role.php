@@ -15,22 +15,7 @@ class Role extends Migration
         Schema::create('roles', function(Blueprint $table){
             $table->increments('id');
             $table->string('name');
-            $table->timestamps();
-        });
-
-        Schema::create('celeb_role', function(Blueprint $table){
-            $table->integer('celeb_id')->unsigned()->index();
-            $table->foreign('celeb_id')
-                ->references('id')
-                ->on('celebs')
-                ->onDelete('cascade');
-
-            $table->integer('role_id')->unsigned()->index();
-            $table->foreign('role_id')
-                ->references('id')
-                ->on('roles')
-                ->onDelete('cascade');
-
+            $table->string('description');
             $table->timestamps();
         });
     }

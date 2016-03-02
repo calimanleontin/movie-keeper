@@ -16,6 +16,11 @@ class Celebs extends Migration
             $table->increments('id');
             $table->bigInteger('views')->default(0);
             $table->string('name');
+            $table->integer('role_id')->unsigned()->default(0);
+            $table->foreign('role_id')
+                ->references('id')
+                ->on('roles')
+                ->onDelete('cascade');
             $table->timestamps();
         });
 
