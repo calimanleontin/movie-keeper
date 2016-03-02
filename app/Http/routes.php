@@ -25,4 +25,9 @@
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'WelcomeController@index');
+
+    Route::get('/auth/login','UserController@getLogin');
+    Route::post('/auth/login', 'UserController@postLogin');
+    Route::get('/auth/register', 'UserController@getRegister');
+    Route::post('/auth/register', 'UserController@postRegister');
 });
