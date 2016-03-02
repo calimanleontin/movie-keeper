@@ -17,23 +17,6 @@
     <!-- Latest compiled and minified JavaScript -->
     {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>--}}
     {{--facebook --}}
-    <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId      : '928802613864066',
-                xfbml      : true,
-                version    : 'v2.5'
-            });
-        };
-
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
 
     {{--JQuery--}}
 
@@ -72,25 +55,6 @@
                     <a href="{{ url('/') }}">Home</a>
                 </li>
 
-                <li>
-                    <a href="{{ url('/trending') }}">Trending</a>
-                </li>
-
-                <li>
-                    <a href="{{ url('/fresh') }}">Fresh</a>
-                </li>
-
-                <li>
-                    <a href="{{ url('/make-categories') }}">Fa categorii</a>
-                </li>
-
-                <li>
-                    <form action="/search" method = 'get' class="form-group form form-inline search-down">
-                        <input type="text" name='q' id='auto' placeholder="Search..." class="form-control">
-                        <input type="submit" class='form-control left-search' value="Search">
-                    </form>
-                </li>
-
             </ul>
             <ul class="nav navbar-nav navbar-right list-inline">
                 @if (Auth::guest())
@@ -115,24 +79,9 @@
                         <button class="btn btn-default dropdown-toggle " type="button" id="menu1" data-toggle="dropdown">{{Auth::user()->name}}
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                            @if(!Auth::guest())
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/post/create">Upload photo</a></li>
-                            @endif
-                            @if(!Auth::guest() and Auth::user()->is_admin())
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/post/manage">Manage photos</a></li>
-                            @endif
-
                             <li>
                                 <a href="{{ url('/auth/profile') }}">Profile</a>
                             </li>
-
-                            @if(!Auth::guest() and Auth::user()->is_admin())
-                                <li role="presentation">
-                                    <a role="menuitem" tabindex='-1' href="/auth/management">
-                                        Manage users
-                                    </a>
-                                </li>
-                            @endif
 
                         </ul>
                     </div>
