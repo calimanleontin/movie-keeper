@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Celebs extends Migration
+class CelebComments extends Migration
 {
     /**
      * Run the migrations.
@@ -12,26 +12,20 @@ class Celebs extends Migration
      */
     public function up()
     {
-        Schema::create('celebs', function(Blueprint $table){
+        Schema::create('celebComments', function(Blueprint $table){
             $table->increments('id');
-            $table->bigInteger('views')->default(0);
-            $table->string('name');
-            $table->timestamps();
-        });
-
-        Schema::create('movie_celeb', function(Blueprint $table){
-            $table->integer('movie_id')->unsigned()->index();
-            $table->foreign('movie_id')
+            $table->text('content');
+            $table->integer('user_id')->unsigned()->default(0);
+            $table->foreign('user_id')
                 ->references('id')
-                ->on('movies')
+                ->on('users')
                 ->onDelete('cascade');
 
-            $table->integer('celeb_id')->unsigned()->index();
+            $table->integer('celeb_id')->unsigned()->default(0);
             $table->foreign('celeb_id')
                 ->references('id')
                 ->on('celebs')
                 ->onDelete('cascade');
-
             $table->timestamps();
         });
     }

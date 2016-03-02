@@ -12,7 +12,14 @@ class News extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('news', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('title');
+            $table->string('slug');
+            $table->text('description');
+            $table->dateTime('date');
+            $table->timestamps();
+        });
     }
 
     /**
