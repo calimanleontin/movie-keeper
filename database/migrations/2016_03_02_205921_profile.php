@@ -21,7 +21,7 @@ class Profile extends Migration
             $table->integer('user_id')->unsigned()->default(0);
             $table->foreign('user_id')
                 ->references('id')
-                ->on('user')
+                ->on('users')
                 ->onDelete('cascade');
             $table->timestamps();
         });
