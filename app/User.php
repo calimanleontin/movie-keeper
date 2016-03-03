@@ -43,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\MovieComments');
     }
+
+    public function is_admin()
+    {
+        return $this->role == 'admin';
+    }
 }
