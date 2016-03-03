@@ -75,28 +75,4 @@ class UserController extends Controller
         else
             return redirect('/')->withErrors('You have not sufficient permissions');
     }
-
-    public function imdbSearch(Request $request)
-    {
-        $term = $request->get('q');
-        $client = new Client();
-        $url =  self::url . $term;
-        $res = $client->request('GET', $url);
-        if(json_decode($res->getBody(),1)['Response'] == 'False')
-        {
-            return view('movies.index')->withErrors('The requested movie was not found');
-        }
-        $json = json_decode($res->getBody(), true);
-        $movies = array();
-        foreach($json['Search'] as $item)
-        {
-            $movie = new Movies();
-            $movie->title = $item['Title'];
-            $movie->year = $item['Year'];
-            $movie->imdbID = $item['imdbID'];
-            $movie->imdbPoster = $item['Poster'];
-            $movies[] =$movie;
-        }
-        return view('movies.index')->with('movies', $movies);
-    }
 }

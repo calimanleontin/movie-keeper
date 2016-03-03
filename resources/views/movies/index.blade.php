@@ -10,7 +10,7 @@
                 @endif
         </li>
         <li>
-            <form method="get" action="/admin/imdbsearch/" class="form form-inline">
+            <form method="get" action="/imdbsearch/" class="form form-inline">
                 <label for="q"></label>
                 <div class="form-group col-md-4">
                     <input type="text" id='movies' name="q" class="form-control" placeholder="Imdb movie">
