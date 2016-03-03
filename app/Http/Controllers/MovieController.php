@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Http\Requests;
+use \   Auth;
 use App\Movies;
 
 class MovieController extends Controller
@@ -48,5 +49,13 @@ class MovieController extends Controller
            return view('movies.show')
            ->withMovie($movie)
            ->withTitle($movie->Title);
+    }
+
+    public function createMovie()
+    {
+        if(!Auth::guest() and Auth::user()->is_admin())
+            return view('movies.create');
+        else
+            return redirect('/')->withErrors('You have not sufficient permissions');
     }
 }

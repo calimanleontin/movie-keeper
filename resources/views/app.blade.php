@@ -87,6 +87,11 @@
                             <li>
                                 <a href="{{ url('/auth/profile') }}">Profile</a>
                             </li>
+                            @if(!Auth::guest() and Auth::user()->is_admin())
+                                <li>
+                                    <a href="/auth/createMovie">New Movie</a>
+                                </li>
+                            @endif
 
                         </ul>
                     </div>
