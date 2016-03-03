@@ -13,12 +13,18 @@ html {
 }
 #footer {
     margin-left:80px;
-    position: fixed;
+    position: relative;
+    max-width:850px;
     min-width:850px;
-    bottom:0;
+    margin-bottom:0;
+    margin-top:379px;
 }
-.spacing{
-    margin-left: 40px;;
+.spacing-left{
+    margin-left: 40px;
+    margin-bottom:300px;
+}
+.spacing-right{
+    margin-right:50px;
 }
 .space-form{
     min-height: 34px;
