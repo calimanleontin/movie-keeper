@@ -54,6 +54,11 @@
                 <li>
                     <a href="{{ url('/') }}">Home</a>
                 </li>
+                <li>
+                    @if(!Auth::guest() and Auth::user()->is_admin())
+                        <a href="{{ url('/auth/admin') }}">Home</a>
+                    @endif
+                </li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right list-inline">
