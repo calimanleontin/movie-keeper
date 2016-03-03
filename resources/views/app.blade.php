@@ -32,7 +32,7 @@
     <script src="//codeorigin.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>
 
 
-    <title>9GAG</title>
+    <title>Movie Manager</title>
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
