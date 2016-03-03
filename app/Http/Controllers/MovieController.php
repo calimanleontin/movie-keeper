@@ -45,6 +45,8 @@ class MovieController extends Controller
             return view('movies.index')->withErrors('The requested movie was not found');
         }
         $movie = json_decode($response->getBody());
-       return view('movie.show')->withMovie($movie);
+       return view('movies.show')
+           ->withMovie($movie)
+           ->withTitle($movie->Title);
     }
 }

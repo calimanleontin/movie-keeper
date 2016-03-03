@@ -1,4 +1,8 @@
 @extends('app')
 @section('title')
-    {{$title}}
+    {{$movie->Title}}
+@endsection()
+@section('content')
+
+    <div class=""
 @endsection
