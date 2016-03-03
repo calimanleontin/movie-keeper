@@ -26,8 +26,8 @@ class MovieController extends Controller
         foreach($json['Search'] as $item)
         {
             $movie = new Movies();
-            $movie->title = $item['Title'];
-            $movie->year = $item['Year'];
+            $movie->Title = $item['Title'];
+            $movie->Year = $item['Year'];
             $movie->imdbID = $item['imdbID'];
             $movie->imdbPoster = $item['Poster'];
             $movies[] =$movie;
@@ -45,7 +45,7 @@ class MovieController extends Controller
             return view('movies.index')->withErrors('The requested movie was not found');
         }
         $movie = json_decode($response->getBody());
-       return view('movies.show')
+           return view('movies.show')
            ->withMovie($movie)
            ->withTitle($movie->Title);
     }

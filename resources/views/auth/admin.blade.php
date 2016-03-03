@@ -12,7 +12,7 @@
                 </div>
                 <div class="list-group-item">
                     <div class="space-form">
-                        <form method="get" action="/admin/imdbsearch/" class="form">
+                        <form method="get" action="/imdbsearch/" class="form">
                             <label for="q"></label>
                             <div class="form-group col-md-4">
                                 <input type="text" id='movies' name="q" class="form-control" placeholder="Imdb movie">

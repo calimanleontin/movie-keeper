@@ -24,10 +24,11 @@
         @foreach($movies as $movie)
             <div class="col-md-3 movie" xmlns:max-height="http://www.w3.org/1999/xhtml">
                 <div class="panel-title  title">
-                    <a href="/imdbmovie/{{$movie->imdbID}}">{{$movie->title}} </a>
+                    <a href="/imdbmovie/{{$movie->imdbID}}">{{$movie->Title}} </a>
                     <a href ='/imdbmovie/{{$movie->imdbID}}'>
                         <img src={{$movie->imdbPoster}},  style="max-height: 200px; max-width: 120px;"  alt="Poster" class = 'img-responsive'>
                     </a>
+                    Year: {{$movie->Year}}
 
                 </div>
 

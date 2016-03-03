@@ -14,15 +14,15 @@ class Movie extends Migration
     {
         Schema::create('movies', function(Blueprint $table){
             $table->increments('id');
-            $table->string('title');
-            $table->string('year');
-            $table->string('rated');
-            $table->string('released');
+            $table->string('Title');
+            $table->string('Year');
+            $table->string('Rated');
+            $table->string('Released');
             $table->string('slug');
-            $table->string('runtime');
-            $table->text('plot');
-            $table->string('language');
-            $table->string('awards');
+            $table->string('Runtime');
+            $table->text('Plot');
+            $table->string('Language');
+            $table->string('Awards');
             $table->string('imdbPoster');
             $table->string('myPoster');
             $table->string("imdbRating");
