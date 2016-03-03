@@ -150,6 +150,16 @@
     </div>
 </div>
 
+<div id="footer">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+    Created by Caliman Leontin
+    <br>
+    Email: calimanleontin@gmail.com
+            </div>
+        </div>
+</div>
+
 
 </body>
 </html>

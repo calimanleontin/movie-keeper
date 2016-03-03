@@ -8,6 +8,18 @@ html {
     padding-top: 5px;
     font-size: 18px;
 }
+.left{
+    float: left;
+}
+#footer {
+    margin-left:80px;
+    position: fixed;
+    min-width:850px;
+    bottom:0;
+}
+.spacing{
+    margin-left: 40px;;
+}
 .space-form{
     min-height: 34px;
 }
@@ -16,6 +28,7 @@ html {
 }
 .movie
 {
+    padding-top: 10px;
     float:left;
     margin:33px;
     border-style: solid;
