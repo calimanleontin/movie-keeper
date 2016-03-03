@@ -2,8 +2,8 @@ angular.module('movieService', [])
 
     .factory('Movie', function($http){
         return{
-            get: function() {
-                
+            get: function(url) {
+                return $http.get('');
             }
         }
     });
