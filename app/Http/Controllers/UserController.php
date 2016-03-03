@@ -63,4 +63,17 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/')->withMessage('Logout successfully');
     }
+
+    public function adminInterface()
+    {
+        if(!Auth::guest() and Auth::user()->is_admin())
+            return view('auth.admin');
+        else
+            return redirect('/')->withErrors('You have not sufficient permissions');
+    }
+
+    public function imdbSearch()
+    {
+
+    }
 }

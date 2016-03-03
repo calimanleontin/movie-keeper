@@ -31,4 +31,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/auth/register', 'UserController@getRegister');
     Route::post('/auth/register', 'UserController@postRegister');
     Route::get('/auth/logout', 'UserController@logout');
+
+    Route::get('admin/imdbsearch', 'UserController@imdbSearch');
+
+    Route::get('/auth/admin', 'UserController@adminInterface');
 });

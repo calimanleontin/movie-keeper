@@ -8,6 +8,9 @@ html {
     padding-top: 5px;
     font-size: 18px;
 }
+.space-form{
+    min-height: 34px;
+}
 p.response-btn
 {
     color: #2e6da4;
