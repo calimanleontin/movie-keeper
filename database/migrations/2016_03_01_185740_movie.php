@@ -21,6 +21,9 @@ class Movie extends Migration
             $table->string('slug');
             $table->string('Runtime');
             $table->text('Plot');
+            $table->string('genre');
+            $table->string('director');
+            $table->string('writer');
             $table->string('Language');
             $table->string('Awards');
             $table->string('imdbPoster');

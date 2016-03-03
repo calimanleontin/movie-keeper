@@ -58,4 +58,17 @@ class MovieController extends Controller
         else
             return redirect('/')->withErrors('You have not sufficient permissions');
     }
+
+    public function storeMovie(Request $request)
+    {
+        if(!Auth::guest() and Auth::user()->is_admin())
+        {
+            $data = $request->all();
+            $movie = new Movies($data);
+            $movie->save();
+            return redirect('/auth/admin')->withMessage('Success');
+        }
+        else
+            return redirect('/')->withErrors('You have not sufficient permissions');
+    }
 }

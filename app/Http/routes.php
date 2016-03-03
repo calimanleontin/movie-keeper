@@ -35,6 +35,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/imdbsearch', 'MovieController@imdbSearch');
     Route::get('/imdbmovie/{id}', 'MovieController@imdbShow');
     Route::get('/auth/createMovie', 'MovieController@createMovie');
+    Route::post('/auth/storeMovie', 'MovieController@storeMovie');
+
 
     Route::get('/auth/admin', 'UserController@adminInterface');
 });
