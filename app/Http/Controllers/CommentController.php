@@ -6,15 +6,13 @@ use Illuminate\Http\Request;
 use App\MovieComments;
 use App\User;
 use Illuminate\Support\Facades\Input;
-
 use App\Http\Requests;
-use Symfony\Component\HttpFoundation\Response;
 
 class CommentController extends Controller
 {
-    public function show()
+    public function show($id)
     {
-        $comments = MovieComments::where('movie_id', 'tt0103359')->with('user')->get();
+        $comments = MovieComments::where('movie_id', $id)->with('user')->get();
         return \Response::json($comments);
     }
     public function store()
@@ -23,7 +21,7 @@ class CommentController extends Controller
         $movieId = Input::get('movie');
         $comment = new MovieComments();
         $comment->content = $content;
-        $comment->user_id = Auth::user()->id;
+        $comment->user_id = \Auth::user()->id;
         $comment->movie_id = $movieId;
         $comment->save();
         return \Response::json(array('success' => true));

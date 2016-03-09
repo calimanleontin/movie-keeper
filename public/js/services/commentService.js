@@ -1,11 +1,12 @@
 angular.module('commentService', [])
 
     .factory('Comment', function($http){
+
         return{
-            get: function() {
-                return $http.get('/api/comments/');
+            get: function(id) {
+                return $http.get('/api/comments/' + id);
             },
-            save : function() {
+            save : function(commentData) {
                 return $http({
                     method  :   'POST',
                     url     :   '/api/comments/store',

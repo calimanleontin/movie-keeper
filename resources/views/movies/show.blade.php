@@ -26,8 +26,7 @@
         <div class="comment">
             <h3>Add a comment</h3>
             <form ng-submit="submitArticle()">
-
-                <input type="hidden" ng-model="commentData.movie" ng-value={{$movie->imdbID}}>
+                <input type="hidden" ng-model="commentData.movie" ng-init="dataComment.movie = 100;" value="{{$movie->imdbID}}">
                 <div class="form-group">
                     <textarea type="text" class="form-control input-large" name="author" ng-model="commentData.content" placeholder="Content"></textarea>
                 </div>
@@ -40,9 +39,8 @@
 
 
         <div class="article" ng-hide="loading" ng-repeat="comment in comments">
-            <?php $number = 1; ?>
-            <h3>Comment #{{$number}} <small>by @{{ comment.user.name }} </small>  </h3>
-                <?php $number ++; ?>
+            <h3>Comment  <small>by @{{ comment.user.name }} </small>  </h3>
+
             <p>@{{ comment.content }}</p>
 
             <ul class="list-inline" >

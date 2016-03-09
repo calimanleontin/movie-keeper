@@ -38,8 +38,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/auth/storeMovie', 'MovieController@storeMovie');
 
 
-    Route::get('/api/comments/', 'CommentController@show');
-    Route::get('/api/comments/store', 'CommentController@store');
+    Route::get('/api/comments/{id}', 'CommentController@show');
+    Route::post('/api/comments/store', 'CommentController@store');
 
 
 
