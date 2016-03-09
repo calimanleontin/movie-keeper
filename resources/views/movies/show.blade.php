@@ -4,7 +4,7 @@
 @endsection()
 @section('content')
 
-    <div class="" ng-app="articleApp" ng-controller="mainController">
+    <div class="" >
         <div>
             <div class="left img-responsive spacing-right">
                 <img src={{$movie->Poster}}>
@@ -27,7 +27,6 @@
             <h3>Add a comment</h3>
             <form ng-submit="submitArticle()">
 
-                <input type="hidden" ng-model="commentData.user" ng-value={{Auth::user()->id}}>
                 <input type="hidden" ng-model="commentData.movie" ng-value={{$movie->imdbID}}>
                 <div class="form-group">
                     <textarea type="text" class="form-control input-large" name="author" ng-model="commentData.content" placeholder="Content"></textarea>
@@ -41,8 +40,10 @@
 
 
         <div class="article" ng-hide="loading" ng-repeat="comment in comments">
-            <h3>Comment #{{ comment.id }} <small>by {{ comment.user.name }} </small></h3>
-            <p>{{ comment.content }}</p>
+            <?php $number = 1; ?>
+            <h3>Comment #{{$number}} <small>by @{{ comment.user.name }} </small>  </h3>
+                <?php $number ++; ?>
+            <p>@{{ comment.content }}</p>
 
             <ul class="list-inline" >
 
@@ -50,6 +51,7 @@
 
             </ul>
         </div>
+
 
 
     </div>

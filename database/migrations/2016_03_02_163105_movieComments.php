@@ -15,11 +15,8 @@ class MovieComments extends Migration
         Schema::create('movieComments', function(Blueprint $table){
             $table->increments('id');
             $table->string('content');
-            $table->integer('movie_id')->unsigned()->default(0);
-            $table->foreign('movie_id')
-                ->references('id')
-                ->on('movies')
-                ->onDelete('cascade');
+            $table->string('movie_id');
+
 
             $table->integer('user_id')->unsigned()->default(0);
             $table->foreign('user_id')

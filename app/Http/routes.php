@@ -38,5 +38,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/auth/storeMovie', 'MovieController@storeMovie');
 
 
+    Route::get('/api/comments/', 'CommentController@show');
+    Route::get('/api/comments/store', 'CommentController@store');
+
+
+
     Route::get('/auth/admin', 'UserController@adminInterface');
 });

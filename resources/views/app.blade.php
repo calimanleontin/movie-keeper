@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  ng-app="commentApp" ng-controller="mainController">
 <head>
     {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>--}}
 
@@ -20,7 +20,16 @@
 
     {{--JQuery--}}
 
-    <script type="text/javascript" src="/js/script.js"></script>
+            <!-- JS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script> <!-- load angular -->
+
+    <!-- ANGULAR -->
+    <!-- all angular resources will be loaded from the /public folder -->
+
+    <script type="text/javascript" src="/js/controllers/mainCtrl.js"></script>
+    <script type="text/javascript" src="/js/services/commentService.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

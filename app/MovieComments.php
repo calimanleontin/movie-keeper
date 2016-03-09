@@ -10,11 +10,6 @@ class MovieComments extends Model
 
     protected $table = 'movieComments';
 
-    public function movie()
-    {
-        return $this->belongsTo('App\Movies', 'movie_id');
-    }
-
     public function user()
     {
         return $this->belongsTo('App\User');
