@@ -40,6 +40,18 @@
         </div>
 
 
+        <div class="article" ng-hide="loading" ng-repeat="comment in comments">
+            <h3>Comment #{{ comment.id }} <small>by {{ comment.user.name }} </small></h3>
+            <p>{{ comment.content }}</p>
+
+            <ul class="list-inline" >
+
+                <li><p><a href="#" ng-click="deleteComment(comment.id)" class="text-muted">Delete</a></p></li>
+
+            </ul>
+        </div>
+
+
     </div>
 
 @endsection
