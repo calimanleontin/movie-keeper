@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Searches;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Http\Requests;
@@ -12,9 +13,54 @@ class MovieController extends Controller
 {
     const url = 'http://www.omdbapi.com/?';
 
+    public function index()
+    {
+        $search = Searches::find(1);
+        if($search == null)
+            return view('home');
+        else
+        {
+            $popular = json_decode($search->popular, true);
+            if($popular == null)
+                return view('home')
+                    ->withMessage('Sorry, this page is empty');
+            else
+            {
+                $movies = array();
+                arsort($popular);
+                $maximNumberOfMovies = 3;
+                foreach($popular as $key => $value)
+                {
+                    $maximNumberOfMovies -= 1;
+                    $client = new Client();
+                    $url =  self::url .'s=' . $key;
+                    $res = $client->request('GET', $url);
+                    $json = json_decode($res->getBody(), true);
+                    foreach($json['Search'] as $item)
+                    {
+                        $movie = new Movies();
+                        $movie->Title = $item['Title'];
+                        $movie->Year = $item['Year'];
+                        $movie->imdbID = $item['imdbID'];
+                        $movie->imdbPoster = $item['Poster'];
+                        $movies[] =$movie;
+                    }
+                    if(!$maximNumberOfMovies)
+                    {
+                        shuffle($movies);
+                        return view('movies.index')->with('movies', $movies);
+                    }
+                }
+            }
+            shuffle($movies);
+            return view('movies.index')->with('movies', $movies);
+        }
+    }
+
     public function imdbSearch(Request $request)
     {
         $term = $request->get('q');
+
         $client = new Client();
         $url =  self::url .'s=' . $term;
         $res = $client->request('GET', $url);
@@ -22,6 +68,26 @@ class MovieController extends Controller
         {
             return view('movies.index')->withErrors('The requested movie was not found');
         }
+        $search = Searches::find(1);
+        if($search == null)
+        {
+            $search = new Searches();
+            $popular = array();
+            $search->popular = json_encode($popular);
+        }
+        $popular = json_decode($search->popular, true);
+        if(!array_key_exists($term,$popular))
+        {
+            $popular[$term] = 1;
+        }
+        else
+        {
+            $popular[$term] += 1;
+        }
+        $search->popular = json_encode($popular);
+        $search->save();
+
+
         $json = json_decode($res->getBody(), true);
         $movies = array();
         foreach($json['Search'] as $item)

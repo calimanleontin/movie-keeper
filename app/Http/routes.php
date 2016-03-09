@@ -24,7 +24,7 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/', 'WelcomeController@index');
+    Route::get('/', 'MovieController@index');
 
     Route::get('/auth/login','UserController@getLogin');
     Route::post('/auth/login', 'UserController@postLogin');
