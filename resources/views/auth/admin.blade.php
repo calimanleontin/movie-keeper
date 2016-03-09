@@ -23,12 +23,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="list-group-item">
-                    <article>
-                        ce plm e asta
-                    </article>
-                </div>
-            </div>
+
 
 
         <div class="list-group">
