@@ -31,6 +31,7 @@ angular.module('mainCtrl', [])
                         .success(function(data){
                             $scope.comments = data;
                             $scope.loading = false;
+                            $scope.commentData.content = '';
                         });
                 });
         };
