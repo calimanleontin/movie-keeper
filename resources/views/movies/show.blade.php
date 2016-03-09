@@ -4,7 +4,7 @@
 @endsection()
 @section('content')
 
-    <div class="">
+    <div class="" ng-app="articleApp" ng-controller="mainController">
         <div>
             <div class="left img-responsive spacing-right">
                 <img src={{$movie->Poster}}>
@@ -23,8 +23,20 @@
                 <h4>IMDB VOTES:{{$movie->imdbVotes}}</h4>
             </div>
         </div>
-        <div>
+        <div class="comment">
+            <h3>Add a comment</h3>
+            <form ng-submit="submitArticle()">
 
+                <input type="hidden" ng-model="commentData.user" ng-value={{Auth::user()->id}}>
+                <input type="hidden" ng-model="commentData.movie" ng-value={{$movie->imdbID}}>
+                <div class="form-group">
+                    <textarea type="text" class="form-control input-large" name="author" ng-model="commentData.content" placeholder="Content"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                </div>
+
+            </form>
         </div>
 
 
