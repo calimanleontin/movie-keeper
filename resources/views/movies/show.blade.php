@@ -25,7 +25,7 @@
         </div>
         <div class="comment">
             <h3>Add a comment</h3>
-            <form ng-submit="submitArticle()">
+            <form ng-submit="submitComment()">
                 <input type="hidden" ng-model="commentData.movie" ng-init="dataComment.movie = 100;" value="{{$movie->imdbID}}">
                 <div class="form-group">
                     <textarea type="text" class="form-control input-large" name="author" ng-model="commentData.content" placeholder="Content"></textarea>
@@ -33,7 +33,6 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                 </div>
-
             </form>
         </div>
 

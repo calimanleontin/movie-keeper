@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\MovieComments;
 use App\User;
@@ -24,6 +25,15 @@ class CommentController extends Controller
         $comment->user_id = \Auth::user()->id;
         $comment->movie_id = $movieId;
         $comment->save();
+        return \Response::json(array('success' => true));
+    }
+
+    public function delete($id)
+    {
+        $comment = MovieComments::find($id);
+        if($comment == null)
+            return \Response::json(array('success' => false));
+        $comment->delete();
         return \Response::json(array('success' => true));
     }
 }

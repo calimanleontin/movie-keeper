@@ -8,14 +8,18 @@ angular.module('mainCtrl', [])
         var href = window.location.href;
         href = href.split('/');
         var number = href.length;
-        var id = (href[number-1]);
-        Comment.get(id)
+        var movie_id = (href[number-1]);
+        if(movie_id[movie_id.length-1] == '#')
+        {
+            id = id.substring(0, id.length - 1);
+        }
+        Comment.get(movie_id)
             .success(function(data){
                 $scope.comments = data;
                 $scope.loading  = false;
             });
 
-        $scope.submitArticle = function() {
+        $scope.submitComment = function() {
             $scope.loading = true;
             var href = window.location.href;
             href = href.split('/');
@@ -27,7 +31,7 @@ angular.module('mainCtrl', [])
             Comment.save($scope.commentData)
                 .success(function(data){
 
-                    Comment.get(id)
+                    Comment.get(movie_id)
                         .success(function(data){
                             $scope.comments = data;
                             $scope.loading = false;
@@ -35,6 +39,20 @@ angular.module('mainCtrl', [])
                         });
                 });
         };
+
+        $scope.deleteComment = function(id) {
+            $scope.loading  = true;
+
+            Comment.delete(id)
+                .success(function(data){
+
+                    Comment.get(movie_id)
+                        .success(function(data){
+                            $scope.comments = data;
+                            $scope.loading = false;
+                        });
+                });
+        }
 
 
     });

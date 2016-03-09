@@ -4,6 +4,7 @@ angular.module('commentService', [])
 
         return{
             get: function(id) {
+                alert(id);
                 return $http.get('/api/comments/' + id);
             },
             save : function(commentData) {
@@ -13,6 +14,10 @@ angular.module('commentService', [])
                     data    : $.param(commentData),
                     headers : {'Content-Type' : 'application/x-www-form-urlencoded'}
                 });
+            },
+
+            delete : function(id){
+                return $http.get('/api/comments/delete/' + id);
             }
         }
     });
