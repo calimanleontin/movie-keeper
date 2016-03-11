@@ -22,16 +22,18 @@
                 <h4>IMDB RATING:{{$movie->imdbRating}} </h4>
                 <h4>IMDB VOTES:{{$movie->imdbVotes}}</h4>
             </div>
-            <div class="btn-upper">
-                <ul class = 'list-inline'>
-                    <li>
-                        <a href="" ng-click="addToWishList()"><button class="btn btn-default"  >Add to Wish List</button></a>
-                    </li>
-                    <li>
-                        <button class="btn btn-default">Add to Seen List</button>
-                    </li>
-                </ul>
-            </div>
+            @if(!Auth::guest())
+                <div class="btn-upper">
+                    <ul class = 'list-inline'>
+                        <li>
+                            <a href="" ng-click="addToWishList()"><button class="btn btn-default"  >Add to Wish List</button></a>
+                        </li>
+                        <li>
+                            <button class="btn btn-default">Add to Seen List</button>
+                        </li>
+                    </ul>
+                </div>
+            @endif
         </div>
         @if(!Auth::guest())
             <div class="comment">

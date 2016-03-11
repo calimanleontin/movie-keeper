@@ -147,6 +147,8 @@ class MovieController extends Controller
 
     public function wishList($imdbID)
     {
+        if(Auth::guest())
+            return Response::json(array('success'=>false));
         $user_id = Auth::user()->id;
         $wishList = WishLists::where('user_id', $user_id)->first();
         if($wishList == null)
