@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Searches;
+use App\Wishlists;
+use \Response;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Http\Requests;
-use \   Auth;
+use \Auth;
 use App\Movies;
 
 class MovieController extends Controller
@@ -17,7 +19,9 @@ class MovieController extends Controller
     {
         $search = Searches::find(1);
         if($search == null)
+        {
             return view('home');
+        }
         else
         {
             $popular = json_decode($search->popular, true);
@@ -93,9 +97,12 @@ class MovieController extends Controller
         foreach($json['Search'] as $item)
         {
             $movie = new Movies();
+            $duplicate = Movies::where('imdbID',$item['imdbID'])->first();
+            $movie->imdbID = $item['imdbID'];
+            if($duplicate == null)
+                $movie->save();
             $movie->Title = $item['Title'];
             $movie->Year = $item['Year'];
-            $movie->imdbID = $item['imdbID'];
             $movie->imdbPoster = $item['Poster'];
             $movies[] =$movie;
         }
@@ -136,5 +143,32 @@ class MovieController extends Controller
         }
         else
             return redirect('/')->withErrors('You have not sufficient permissions');
+    }
+
+    public function wishList($imdbID)
+    {
+        $user_id = Auth::user()->id;
+        $wishList = WishLists::where('user_id', $user_id)->first();
+        if($wishList == null)
+        {
+            $wishList = new WishLists();
+            $wishList->user_id = $user_id;
+            $wishList->save();
+        }
+        $movie = Movies::where('imdbID', $imdbID)->first();
+        $id = $movie->id;
+        $ok = 1;
+        foreach($wishList->movies as $movie)
+        {
+            if($movie->id == $id)
+            {
+                $ok = 0;
+                break;
+            }
+        }
+        if($ok == 1)
+            $wishList->movies()->attach($id);
+        return Response::json(array('success' => 'true'));
+
     }
 }

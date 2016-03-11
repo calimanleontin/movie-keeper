@@ -54,5 +54,14 @@ angular.module('mainCtrl', [])
                 });
         }
 
+        $scope.addToWishList = function(){
+            $scope.loading = true;
+
+            $http.get('/api/movie/wish/' + movie_id )
+                .success(function(data){
+
+                });
+        };
+
 
     });

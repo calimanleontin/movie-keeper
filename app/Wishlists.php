@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class WishLists extends Model
+class Wishlists extends Model
 {
     protected $guarded = [];
 
@@ -13,5 +13,10 @@ class WishLists extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function movies()
+    {
+        return $this->belongsToMany('App\Movies');
     }
 }

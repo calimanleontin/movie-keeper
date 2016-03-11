@@ -38,6 +38,10 @@ html {
 .space-form{
     min-height: 34px;
 }
+.btn-upper{
+    margin-top:-200px;
+    margin-bottom:150px;
+}
 .center{
     align-items:center;
 }

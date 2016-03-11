@@ -23,14 +23,14 @@ class Wishlist extends Migration
             $table->timestamps();
         });
 
-        Schema::create('movie_wishlist', function(Blueprint $table){
-            $table->integer('movie_id')->unsigned()->index();
-            $table->foreign('movie_id')
+        Schema::create('movies_wishlists', function(Blueprint $table){
+            $table->integer('movies_id')->unsigned()->index();
+            $table->foreign('movies_id')
                 ->references('id')
                 ->on('movies')
                 ->onDelete('cascade');
-            $table->integer('wishlist_id')->unsigned()->index();
-            $table->foreign('wishlist_id')
+            $table->integer('wishlists_id')->unsigned()->index();
+            $table->foreign('wishlists_id')
                 ->references('id')
                 ->on('wishlists')
                 ->onDelete('cascade');

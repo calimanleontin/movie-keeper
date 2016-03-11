@@ -22,12 +22,22 @@
                 <h4>IMDB RATING:{{$movie->imdbRating}} </h4>
                 <h4>IMDB VOTES:{{$movie->imdbVotes}}</h4>
             </div>
+            <div class="btn-upper">
+                <ul class = 'list-inline'>
+                    <li>
+                        <a href="" ng-click="addToWishList()"><button class="btn btn-default"  >Add to Wish List</button></a>
+                    </li>
+                    <li>
+                        <button class="btn btn-default">Add to Seen List</button>
+                    </li>
+                </ul>
+            </div>
         </div>
         @if(!Auth::guest())
             <div class="comment">
                 <h3>Add a comment</h3>
                 <form ng-submit="submitComment()">
-                    <input type="hidden" ng-model="commentData.movie" ng-init="dataComment.movie = 100;" value="{{$movie->imdbID}}">
+                    <input type="hidden" ng-model="commentData.movie"  value="{{$movie->imdbID}}">
                     <div class="form-group">
                         <textarea type="text" class="form-control input-large" name="author" ng-model="commentData.content" placeholder="Content"></textarea>
                     </div>
@@ -40,25 +50,18 @@
 
         <div class="list-group">
             <div class="article" ng-hide="loading" ng-repeat="comment in comments">
-                        <div class="list-group-item">
-                            <h3>Comment  <small>by @{{ comment.user.name }} </small>  </h3>
-
-                            <p>@{{ comment.content }}</p>
-
-                            @if(!Auth::guest() and Auth::user()->is_admin() )
-                                <ul class="list-inline" >
-
-                                    <li><p><a href="#" ng-click="deleteComment(comment.id)" class="text-muted">Delete</a></p></li>
-
-                                </ul>
-                            @endif
-                        </div>
+                    <div class="list-group-item">
+                        <h3>Comment  <small>by @{{ comment.user.name }} </small>  </h3>
+                        <p>@{{ comment.content }}</p>
+                        @if(!Auth::guest() and Auth::user()->is_admin() )
+                            <ul class="list-inline" >
+                                <li><p><a href="" ng-click="deleteComment(comment.id)" class="text-muted">Delete</a></p></li>
+                            </ul>
+                        @endif
+                    </div>
                 <br>
             </div>
         </div>
-
-
-
     </div>
 
 @endsection

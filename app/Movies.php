@@ -29,4 +29,9 @@ class Movies extends Model
     {
         return $this->hasMany('App\MovieComments', 'movie_id');
     }
+
+    public function wishlists()
+    {
+        return $this->belongsToMany('App\Wishlists');
+    }
 }

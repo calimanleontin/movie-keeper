@@ -30,7 +30,7 @@ class Movie extends Migration
             $table->string('myPoster');
             $table->string("imdbRating");
             $table->string('imdbVotes');
-            $table->string("imdbID");
+            $table->string("imdbID")->unique();
             $table->string("type");
             $table->bigInteger('views')->default(0);
             $table->timestamps();

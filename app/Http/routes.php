@@ -37,12 +37,12 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/auth/createMovie', 'MovieController@createMovie');
     Route::post('/auth/storeMovie', 'MovieController@storeMovie');
 
-
     Route::get('/api/comments/delete/{id}', 'CommentController@delete');
     Route::get('/api/comments/{id}', 'CommentController@show');
     Route::post('/api/comments/store', 'CommentController@store');
 
-
+    Route::get('/api/movie/wish/{id}', 'MovieController@wishLIst');
+    Route::get('/api/movie/seen/{id}', 'MovieController@seenLIst');
 
     Route::get('/auth/admin', 'UserController@adminInterface');
 });
