@@ -8,6 +8,7 @@ use App\MovieComments;
 use App\User;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -18,6 +19,8 @@ class CommentController extends Controller
     }
     public function store()
     {
+        if(Auth::guest())
+            return \Response::json(array('logged' => false));
         $content = Input::get('content');
         $movieId = Input::get('movie');
         $comment = new MovieComments();

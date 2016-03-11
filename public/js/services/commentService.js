@@ -4,7 +4,6 @@ angular.module('commentService', [])
 
         return{
             get: function(id) {
-                alert(id);
                 return $http.get('/api/comments/' + id);
             },
             save : function(commentData) {
