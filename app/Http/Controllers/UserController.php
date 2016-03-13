@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\MovieComments;
 use App\User;
+use App\Wishlists;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use \Auth;
@@ -84,9 +85,12 @@ class UserController extends Controller
         $user = Auth::user();
         $movieComments = MovieComments::all()->take(5);
             $commentCount = count(MovieComments::all());
+        $wishList = Wishlists::where('user_id', $user->id)->first();
+
         return view('auth.profile')
             ->with('user', $user)
             ->with('comments_count', $commentCount)
-            ->with('latest_comments', $movieComments);
+            ->with('latest_comments', $movieComments)
+            ->with('wishlist', $wishList);
     }
 }
