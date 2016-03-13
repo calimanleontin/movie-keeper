@@ -83,9 +83,7 @@ class UserController extends Controller
             return redirect('/')->withErrors('You are not logged in');
         $user = Auth::user();
         $movieComments = MovieComments::all()->take(5);
-        var_dump($movieComments[1]->movie->Title);
-        die();
-        $commentCount = count(MovieComments::all());
+            $commentCount = count(MovieComments::all());
         return view('auth.profile')
             ->with('user', $user)
             ->with('comments_count', $commentCount)

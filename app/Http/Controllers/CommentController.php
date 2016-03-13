@@ -15,7 +15,8 @@ class CommentController extends Controller
 {
     public function show($id)
     {
-        $comments = MovieComments::where('movie_id', $id)->with('user')->get();
+        $movie = Movies::where('imdbID', $id)->first();
+        $comments = MovieComments::where('movie_id', $movie->id)->with('user')->get();
         return \Response::json($comments);
     }
     public function store()
