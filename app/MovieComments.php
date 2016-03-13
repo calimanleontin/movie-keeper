@@ -14,4 +14,9 @@ class MovieComments extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function movie()
+    {
+        return $this->belongsTo('App\Movies');
+    }
 }

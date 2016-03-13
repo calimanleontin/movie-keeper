@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\MovieComments;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -74,5 +75,20 @@ class UserController extends Controller
             return view('auth.admin');
         else
             return redirect('/')->withErrors('You have not sufficient permissions');
+    }
+
+    public function profile()
+    {
+        if(Auth::guest())
+            return redirect('/')->withErrors('You are not logged in');
+        $user = Auth::user();
+        $movieComments = MovieComments::all()->take(5);
+        var_dump($movieComments[1]->movie->Title);
+        die();
+        $commentCount = count(MovieComments::all());
+        return view('auth.profile')
+            ->with('user', $user)
+            ->with('comments_count', $commentCount)
+            ->with('latest_comments', $movieComments);
     }
 }

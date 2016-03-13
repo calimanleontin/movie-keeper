@@ -27,7 +27,7 @@ class Movies extends Model
 
     public function comments()
     {
-        return $this->hasMany('App\MovieComments', 'movie_id');
+        return $this->hasMany('App\MovieComments');
     }
 
     public function wishlists()

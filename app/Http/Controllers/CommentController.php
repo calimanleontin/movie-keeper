@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Movies;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\MovieComments;
@@ -26,7 +27,8 @@ class CommentController extends Controller
         $comment = new MovieComments();
         $comment->content = $content;
         $comment->user_id = \Auth::user()->id;
-        $comment->movie_id = $movieId;
+        $movie = Movies::where('imdbID', $movieId)->first();
+        $comment->movie_id = $movie->id;
         $comment->save();
         return \Response::json(array('success' => true));
     }

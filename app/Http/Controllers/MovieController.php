@@ -99,9 +99,9 @@ class MovieController extends Controller
             $movie = new Movies();
             $duplicate = Movies::where('imdbID',$item['imdbID'])->first();
             $movie->imdbID = $item['imdbID'];
+            $movie->Title = $item['Title'];
             if($duplicate == null)
                 $movie->save();
-            $movie->Title = $item['Title'];
             $movie->Year = $item['Year'];
             $movie->imdbPoster = $item['Poster'];
             $movies[] =$movie;

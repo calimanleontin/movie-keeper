@@ -45,4 +45,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/api/movie/seen/{id}', 'MovieController@seenLIst');
 
     Route::get('/auth/admin', 'UserController@adminInterface');
+    Route::get('/auth/profile', 'UserController@profile');
 });
